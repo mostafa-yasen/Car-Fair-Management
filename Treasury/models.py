@@ -17,7 +17,7 @@ class Deposit(models.Model):
     date = models.DateTimeField()
 
     def __str__(self):
-        return "+ %s to %s" % (self.amount, self.treasur.branch)
+        return "+ %s to %s" % (self.amount, self.treasur)
 
 
 class Withdraw(models.Model):
@@ -27,4 +27,4 @@ class Withdraw(models.Model):
     date = models.DateTimeField()
 
     def __str__(self):
-        return "- %s to %s" % (self.amount, self.treasur.branch)
+        return "- %s from %s" % (self.amount, self.treasur)
