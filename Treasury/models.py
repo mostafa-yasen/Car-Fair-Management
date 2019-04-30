@@ -8,3 +8,12 @@ class Treasur(models.Model):
 
     def __str__(self):
         return "%s | Cash: %s | Withdraw: %s" % (self.branch, self.total_cash, self.total_withdraw)
+
+
+class Deposit(models.Model):
+    amount = models.IntegerField()
+    notes = models.TextField()
+    treasur = models.ForeignKey(Treasur, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "+ %s" % self.amount
