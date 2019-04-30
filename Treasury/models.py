@@ -19,3 +19,12 @@ class Deposit(models.Model):
     def __str__(self):
         return "+ %s to %s" % (self.amount, self.treasur.branch)
 
+
+class Withdraw(models.Model):
+    amount = models.IntegerField()
+    notes = models.TextField()
+    treasur = models.ForeignKey(Treasur, on_delete=models.CASCADE)
+    date = models.DateTimeField()
+
+    def __str__(self):
+        return "- %s to %s" % (self.amount, self.treasur.branch)
