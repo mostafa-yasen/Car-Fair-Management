@@ -1,6 +1,7 @@
 from django.db import models
 from Cars.models import Car
 from Clients.models import Client
+from datetime import datetime
 
 class Installment(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
@@ -9,3 +10,11 @@ class Installment(models.Model):
 
     def __str__(self):
         return "%s | %s" % (self.client, self.car)
+
+
+class MonthlyInstallment(models.Model):
+    installment = models.ForeignKey(Installment, on_delete=models.CASCADE)
+    installment_date = models.DateField(default=datetime.now)
+
+    def __str__(self):
+        return "%s | %s" % (self.installment, self.installment_date)
