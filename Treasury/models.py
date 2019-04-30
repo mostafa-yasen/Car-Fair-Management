@@ -14,6 +14,8 @@ class Deposit(models.Model):
     amount = models.IntegerField()
     notes = models.TextField()
     treasur = models.ForeignKey(Treasur, on_delete=models.CASCADE)
+    date = models.DateTimeField()
 
     def __str__(self):
-        return "+ %s" % self.amount
+        return "+ %s to %s" % (self.amount, self.treasur.branch)
+
