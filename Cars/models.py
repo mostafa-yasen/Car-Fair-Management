@@ -8,7 +8,7 @@ class Car(models.Model):
     chaisis_no = models.CharField(max_length=200)
     purchasing_price = models.IntegerField()
     selling_price = models.IntegerField()
-    total_expenses = models.IntegerField()
+    total_expenses = models.IntegerField(default=0)
     panal_no = models.CharField(max_length=20)
     color = models.CharField(max_length=50)
     sold = models.BooleanField(default=False)
@@ -16,6 +16,11 @@ class Car(models.Model):
     
     def __str__(self):
         return "%s | %s | %s" % (self.brand, self.model_name, self.model_year)
+
+    def calcExpenses(self):
+        expenses = self.expense_set.all()
+        for exp in expenses:
+            self.total_expenses += exp.amount
 
 
 class Expense(models.Model):
