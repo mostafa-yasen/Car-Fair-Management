@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
-from .models import Branch
+from .models import Branch, Notification
 
 app_name = 'Branches'
 
@@ -14,4 +14,13 @@ def index(request):
 
 def details(request, branch_id):
     branch = get_object_or_404(Branch, pk=branch_id)
-    return HttpResponse(branch)
+    notifications = Notification.objects.all()
+
+    # notifications = get_object_or_404(Notification, branch=branch)
+
+    template = "Branches/home.html"
+    context = {
+        'branch': branch,
+        'notifications': notifications,
+    }
+    return render(request, template, context=context)

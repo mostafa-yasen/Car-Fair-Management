@@ -1,5 +1,6 @@
 from django.db import models
 from Employees.models import Manager
+from Installments.models import MonthlyInstallment
 
 class Branch(models.Model):
     name = models.CharField(max_length=120)
@@ -13,3 +14,11 @@ class Branch(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Notification(models.Model):
+    monthlyInstallment = models.ForeignKey(MonthlyInstallment, on_delete=models.CASCADE)
+    branch = models.ForeignKey(Branch, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "%s | %s" % (self.monthlyInstallment.installment.client, self.monthlyInstallment.installment.car)
