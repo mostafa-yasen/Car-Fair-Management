@@ -13,6 +13,7 @@ class Installment(models.Model):
 
 
 class MonthlyInstallment(models.Model):
+    amount = models.IntegerField(default=5000)
     installment = models.ForeignKey(Installment, on_delete=models.CASCADE)
     installment_date = models.DateField(default=datetime.now)
 

@@ -15,7 +15,7 @@ def index(request):
 def details(request, branch_id):
     branch = get_object_or_404(Branch, pk=branch_id)
     notifications = Notification.objects.all()
-
+    notifications = notifications.filter(branch=branch)
     # notifications = get_object_or_404(Notification, branch=branch)
 
     template = "Branches/home.html"

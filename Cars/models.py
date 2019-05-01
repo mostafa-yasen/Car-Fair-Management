@@ -1,3 +1,4 @@
+# PATH: src/Cars/models.py
 from django.db import models
 
 class Car(models.Model):
@@ -11,6 +12,7 @@ class Car(models.Model):
     panal_no = models.CharField(max_length=20)
     color = models.CharField(max_length=50)
     sold = models.BooleanField(default=False)
+    branch = models.ForeignKey('Branches.Branch', on_delete=models.CASCADE, default=1)
     
     def __str__(self):
         return "%s | %s | %s" % (self.brand, self.model_name, self.model_year)

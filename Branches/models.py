@@ -1,6 +1,8 @@
+# PATH: src/Branches/models.py
 from django.db import models
 from Employees.models import Manager
 from Installments.models import MonthlyInstallment
+
 
 class Branch(models.Model):
     name = models.CharField(max_length=120)
