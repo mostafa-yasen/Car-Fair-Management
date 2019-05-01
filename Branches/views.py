@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Branch
 
 
 def index(request):
-    return HttpResponse("Hello, World. This is index of Branches.")
+    branches = Branch.objects.all()
+
+    template = 'Branches/branches.html'
+    context = {'branches': branches}
+    return render(request, template, context=context)

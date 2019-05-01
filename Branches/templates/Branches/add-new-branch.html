@@ -1,0 +1,127 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Branch</title>
+
+    <!--  Font Awesome Styles  -->
+    <link rel="stylesheet" href="font-awesome/css/all.min.css">
+
+    <!--  Bootstrap Grid System Styles  -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.min.css' %}">
+
+    <!--  Bootstrap Styles  -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+    <!--  My Styles  -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+
+    <!-- Start Navbar  -->
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="#">
+                <img src="images/brand-white.png" height="60" class="d-inline-block align-top" alt="Image Not Found">
+            </a>
+
+            <!--
+            <form class="form-inline my-2 my-lg-0" action="#">
+                <button class="btn btn-outline-light my-2 my-sm-0" style="" type="submit">
+                    <i class="fas fa-sign-in-alt" style="padding-right: 5px;"></i> Login
+                </button>
+            </form>
+            -->
+
+            <div class="user-info my-2 my-lg-0" style="color: aliceblue">
+                <a href="#">
+                    <span>Admin <i class="fas fa-sign-out-alt" style="padding-left: 5px"></i></span>
+                </a>
+            </div>
+
+        </div>
+    </nav>
+    <!-- End Navbar  -->
+
+    <!--  Start Content  -->
+    <div class="container">
+
+        <form action="#" method="post" style="margin-top: 50px">
+            <div class="form-group row">
+                <label for="branchName" class="col-sm-2 col-form-label-lg">Branch Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control form-control-lg" id="branchName" placeholder="EX: AUTO ZIAD">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="branchManager" class="col-sm-2 col-form-label">Manager</label>
+                <div class="col-sm-10">
+                    <select id="branchManager" class="form-control">
+                        <option>Default select</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                        <option>Option 4</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="branchAddress" class="col-sm-2 col-form-label">Address</label>
+                <div class="col-sm-10">
+                    <input type="address" name="address" class="form-control" id="branchAddress" placeholder="EX: Nasr City">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="branchCapital" class="col-sm-2 col-form-label">Equity Capital</label>
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">&pound;</span>
+                        </div>
+                        <input type="text" id="branchCapital" class="form-control" placeholder="EX: 1 000 000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="branchEspenses" class="col-sm-2 col-form-label">Expenses</label>
+                <div class="col-sm-10">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">&pound;</span>
+                        </div>
+                        <input type="text" id="branchEspenses" class="form-control" placeholder="EX: 10 000">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-10">
+                </div>
+                <button type="submit" class="col-sm-2 btn btn-primary shadow-animate">Confirm</button>
+            </div>
+        </form>
+    </div>
+
+    <!--  End Content  -->
+
+
+
+    <!--  Start Footer  -->
+    <footer>
+        Copyrights &copy; 2019 Mostafa Yasin
+    </footer>
+    <!--  Start Footer  -->
+
+    <!--  Jquery Blugin  -->
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+</body>
+
+</html>

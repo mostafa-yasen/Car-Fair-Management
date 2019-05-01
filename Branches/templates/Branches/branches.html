@@ -1,0 +1,92 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Branches</title>
+
+    <!--  Font Awesome Styles  -->
+    <link rel="stylesheet" href="{% static 'font-awesome/css/all.min.css' %}">
+
+    <!--  Bootstrap Grid System Styles  -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.min.css' %}">
+
+    <!--  Bootstrap Styles  -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+    <!--  Global Styles  -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+
+    <!--  Branches  -->
+    <link rel="stylesheet" href="{% static 'css/branches.css' %}">
+</head>
+
+<body>
+
+    <!-- Start Navbar  -->
+    <nav class="navbar navbar-dark" style="background-color: #1c2541; padding: 0px">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/brand-white.png' %}" height="60" class="d-inline-block align-top" alt="Image Not Found">
+            </a>
+
+            <div class="user-info my-2 my-lg-0" style="color: aliceblue">
+                <a href="#">
+                    <span>Admin<i class="fas fa-sign-out-alt" style="padding-left: 5px"></i></span>
+                </a>
+            </div>
+
+        </div>
+    </nav>
+    <!-- End Navbar  -->
+
+    <!--  Start Content  -->
+    <div class="container">
+        <!--  Start Logo  -->
+        <div class="image-container" style="text-align: center">
+            <img src="{% static 'img/brand.png' %}" alt="Image Not Found" height="250px">
+        </div>
+        <!--  End Logo  -->
+
+        <!--  Start Branches  -->
+        <div class="branches-container" style="color: #3d3d3d">
+            <div class="row">
+                {% for branch in branches %}
+                <div class="col">
+                    <a href="/branches/{{branch.pk}}">
+                        <div class="card shadow-animate">
+                            <div class="card-body">
+                                <h3>{{ branch }}</h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+
+                <div class="col">
+                    <a href="add-new-branch.html">
+                        <div class="card shadow-animate add-new" style="">
+                            <div class="card-body" style="">
+                                <h3 style=""><i class="fas fa-plus"></i></h3>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--  End Branches  -->
+    </div>
+
+    <!--  End Content  -->
+    <footer>
+        Copyrights &copy; 2019 Mostafa Yasin
+    </footer>
+    <!--  Jquery Blugin  -->
+    <script src="jquery/jquery-3.3.1.min.js"></script>
+</body>
+
+</html>
