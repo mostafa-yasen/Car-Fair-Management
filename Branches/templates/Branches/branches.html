@@ -57,7 +57,7 @@
             <div class="row">
                 {% for branch in branches %}
                 <div class="col">
-                    <a href="/branches/{{branch.pk}}">
+                    <a href="{% url 'details' branch.pk %}">
                         <div class="card shadow-animate">
                             <div class="card-body">
                                 <h3>{{ branch }}</h3>
@@ -69,9 +69,9 @@
 
                 <div class="col">
                     <a href="add-new-branch.html">
-                        <div class="card shadow-animate add-new" style="">
-                            <div class="card-body" style="">
-                                <h3 style=""><i class="fas fa-plus"></i></h3>
+                        <div class="card shadow-animate add-new">
+                            <div class="card-body">
+                                <h3><i class="fas fa-plus"></i></h3>
                             </div>
                         </div>
                     </a>
@@ -86,7 +86,7 @@
         Copyrights &copy; 2019 Mostafa Yasin
     </footer>
     <!--  Jquery Blugin  -->
-    <script src="jquery/jquery-3.3.1.min.js"></script>
+    <script src="{% static 'jquery/jquery-3.3.1.min.js' %}"></script>
 </body>
 
 </html>
