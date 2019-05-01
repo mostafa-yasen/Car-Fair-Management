@@ -1,3 +1,29 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Client
+from Branches.models import Branch
 
-# Create your views here.
+app_name = "clients"
+
+
+def index(request, branch_id):
+    clients = Client.objects.all()
+    branch = Branch.objects.get(pk=branch_id)
+    clients = clients.filter(branch=branch)
+    
+    template = 'Clients/clients.html'
+    context = {
+        'clients': clients,
+        'branch': branch
+        }
+
+    return render(request, template, context=context)
+
+
+def details(request, branch_id, client_id):
+    branch = get_object_or_404(Branch, pk=branch_id)
+    client = branch.client_set.filter(pk=client_id).first()
+
+    template = 'Clients/client-details.html'
+    context = {'client': client}
+
+    return render(request, template, context=context)
