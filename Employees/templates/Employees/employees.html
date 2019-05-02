@@ -1,0 +1,208 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Employees</title>
+
+    <!--  Font Awesome Styles  -->
+    <link rel="stylesheet" href="{% static 'font-awesome/css/all.min.css' %}">
+
+    <!--  Bootstrap Grid System Styles  -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.min.css' %}">
+
+    <!--  Bootstrap Styles  -->
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+    <!--  Global Styles  -->
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <!--  Global Styles  -->
+    <link rel="stylesheet" href="{% static 'css/my-sidebar.css' %}">
+
+    <!--  Home Styles  -->
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+</head>
+
+<body>
+
+    <!-- Start Navbar  -->
+    <nav class="navbar navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img src="{% static 'img/brand-white.png' %}" height="60" class="d-inline-block align-top" alt="Image Not Found">
+            </a>
+            <div class="user-info my-2 my-lg-0" style="color: aliceblue">
+                <a href="#">
+                    <span>Admin <i class="fas fa-sign-out-alt" style="padding-left: 5px"></i></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- End Navbar  -->
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Start Toggle Button -->
+            <button id="sidebar-toggle" class="transition-md shadow-animate">
+                <h5>
+                    <i class="fas fa-arrow-right"></i>
+                </h5>
+            </button>
+            <!-- End Toggle Button -->
+
+            <!-- Start Sidebar -->
+            <div class="col-sm-2 sidebar">
+                <ul>
+                    <li>
+                        <a href="home.html">
+                            <div class="row">
+                                <div class="col-sm-2 menu-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <div class="col-sm-10">Home</div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="clients.html">
+                            <div class="row">
+                                <div class="col-sm-2 menu-icon">
+                                    <i class="fas fa-users"></i> </div>
+                                <div class="col-sm-10">Clients</div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="cars.html">
+                            <div class="row">
+                                <div class="col-sm-2 menu-icon">
+                                    <i class="fas fa-car-alt"></i></div>
+                                <div class="col-sm-10">Cars</div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="active">
+                        <a href="#">
+                            <div class="row">
+                                <div class="col-sm-2 menu-icon">
+                                    <i class="fas fa-address-book"></i> </div>
+                                <div class="col-sm-10">Employees</div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="expenses.html">
+                            <div class="row">
+                                <div class="col-sm-2 menu-icon">
+                                    <i class="fas fa-dollar-sign"></i> </div>
+                                <div class="col-sm-10">Expenses</div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <div class="row">
+                                <div class="col-sm-2 menu-icon">
+                                    <i class="fas fa-file-alt"></i> </div>
+                                <div class="col-sm-10">Reports</div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <div class="row">
+                                <div class="col-sm-2 menu-icon">
+                                    <i class="fas fa-university"></i> </div>
+                                <div class="col-sm-10">Treasury</div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#">
+                            <div class="row">
+                                <div class="col-sm-2 menu-icon">
+                                    <i class="fas fa-calendar-alt"> </i></div>
+                                <div class="col-sm-10">Installment</div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- End Sidebar -->
+
+            <!-- Start Content -->
+            <div class="col-sm-10 content">
+                <a href="#" class="bg-success transition-fast btn-add shadow-animate"><i class="fas fa-plus"></i></a>
+
+                <div class="statistics">
+                    <h1>
+                        <span class="icon">
+                            <i class="fas fa-address-book"></i>
+                        </span>
+
+                        <span class="count">{{ count }}</span>
+                        Employees
+                    </h1>
+                </div>
+
+                <div class="table-container box-shadow">
+
+                    <table class="table table-hover">
+                        <tbody>
+                            <thead>
+                                <th>ID</th>
+
+                                <td>Full Name</td>
+
+                                <td>Phone</td>
+                                <td>Address</td>
+                                <td>Job</td>
+                                <td>Salary</td>
+                            </thead>
+
+                            {% for emp in employees %}
+                            <tr>
+                                <th>{{ emp.pk }}</th>
+                                <td><a href="{% url 'emp_details' branch.pk emp.pk %}">{{ emp.name }}</a></td>
+                                <td>{{ emp.phone }}</td>
+                                <td>{{ emp.address }}</td>
+                                <td>{{ emp.position }}</td>
+                                <td>&pound; {{ emp.salary }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- End Content -->
+        </div>
+    </div>
+
+
+    <footer>
+        Copyrights &copy; 2019 Mostafa Yasin
+    </footer>
+    
+    <!--  Jquery Plugin  -->
+    <script src="{% static 'jquery/jquery-3.3.1.min.js' %}"></script>
+
+    <script src="{% static 'nice-scroll/jquery.nicescroll.min.js' %}"></script>
+
+    <!--  Home Plugin  -->
+    <script src="{% static 'js/home.js' %}"></script>
+
+    <!--  Global Plugin  -->
+    <script src="{% static 'js/global.js' %}"></script>
+</body>
+
+</html>
