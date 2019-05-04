@@ -30,4 +30,4 @@ class Expense(models.Model):
     date = models.DateTimeField()
 
     def __str__(self):
-        return "%s | %s | %s" % (self.amount, self.car, self.date)
+        return "%s | %s" % (self.amount, self.note)

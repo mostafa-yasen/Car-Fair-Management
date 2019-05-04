@@ -207,9 +207,19 @@
                             </tr>
 
                             <tr>
-                                <th style="width: 20%">Expenses</th>
+                                <th style="width: 20%">Total Expenses</th>
                                 <td>&pound; {{ car.total_expenses }}</td>
                             </tr>
+
+                            <tr>
+                                <th style="width: 20%">Expenses</th>
+                                <td>
+                                    {% for item in expenses %} 
+                                        {{ item }} <br>
+                                    {% endfor %}
+                                    </td>
+                            </tr>
+                            
 
                             <tr>
                                 <th style="width: 20%">Chaisis No.</th>
@@ -230,6 +240,7 @@
                                 <th style="width: 20%">Available</th>
                                 <td>{% if car.sold %}False{% else %}True{% endif %}</td>
                             </tr>
+
                         </tbody>
                     </table>
                 </div>
