@@ -13,7 +13,8 @@ def clients(request, branch_id):
     template = 'Clients/clients.html'
     context = {
         'clients': clients,
-        'branch': branch
+        'branch': branch,
+        'active': 'clients'
         }
 
     return render(request, template, context=context)
@@ -27,7 +28,8 @@ def details(request, branch_id, client_id):
 
     context = {
         'client': client,
-        'branch': branch
+        'branch': branch,
+        'active': 'clients'
         }
 
     return render(request, template, context=context)

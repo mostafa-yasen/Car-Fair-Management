@@ -14,7 +14,8 @@ def cars(request, branch_id):
     context = {
         'cars': cars,
         'branch': branch,
-        'count': len(cars)
+        'count': len(cars),
+        'active': 'cars'
     }
 
     return render(request, template, context=context)
@@ -31,6 +32,7 @@ def car_details(request, branch_id, car_id):
         'branch': branch,
         'car': car,
         'expenses': expenses,
+        'active': 'cars'
     }
     template = "Cars/car-details.html"
     return render(request, template, context=context)
@@ -54,6 +56,7 @@ def expenses(request, branch_id):
     context = {
         'branch': branch,
         'expenses': temp,
-        'count': count
+        'count': count,
+        'active': 'expenses'        
     }
     return render(request, template, context=context)

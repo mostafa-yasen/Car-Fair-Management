@@ -16,6 +16,7 @@ def employees(request, branch_id):
         'manager': manager,
         'employees': employees,
         'count': count,
+        'active': 'employees'
     }
 
     return render(request, template, context=context)
@@ -29,6 +30,7 @@ def emp_details(request, branch_id, employee_id):
     context = {
         'branch': branch,
         'employee': employee,
+        'active': 'employees'
     }
 
     return render(request, template, context=context)

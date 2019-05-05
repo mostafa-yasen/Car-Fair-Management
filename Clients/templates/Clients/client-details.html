@@ -12,13 +12,13 @@
         <div class="details-header">
             <h1 class="text-center text-shadow text-uppercase">
                 {{ client }}
-                <button class="btn btn-primary shadow-animate scale">
+                <a href="http://localhost:8000/admin/Clients/client/{{ branch.pk }}/change/" class="btn btn-primary shadow-animate scale mb-2">
                     <i class="fas fa-pen"></i>
-                </button>
+                </a>
 
-                <button type="button" data-toggle="modal" data-target=".bd-example-modal-sm" class="btn btn-danger shadow-animate scale">
+                <a  href="#" data-toggle="modal" data-target=".bd-example-modal-sm" class="btn btn-danger shadow-animate scale mb-2">
                     <i class="fas fa-trash"></i>
-                </button>
+                </a>
             </h1>
         </div>
 

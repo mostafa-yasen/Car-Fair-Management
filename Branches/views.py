@@ -8,7 +8,9 @@ def index(request):
     branches = Branch.objects.all()
 
     template = 'Branches/branches.html'
-    context = {'branches': branches}
+    context = {
+        'branches': branches,
+        }
     return render(request, template, context=context)
 
 
@@ -22,5 +24,6 @@ def details(request, branch_id):
     context = {
         'branch': branch,
         'notifications': notifications,
+        'active': 'home'
     }
     return render(request, template, context=context)
