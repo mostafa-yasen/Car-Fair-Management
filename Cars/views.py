@@ -36,7 +36,24 @@ def car_details(request, branch_id, car_id):
     return render(request, template, context=context)
 
 
-def expenses(request):
-    template = "expenses.html"
-    context = {}
+def expenses(request, branch_id):
+    branch = Branch.objects.get(pk=branch_id)
+    expenses = Expense.objects.all()
+
+    temp = []
+    count = 0
+
+    for ex in expenses:
+        if ex.car.branch == branch:
+            print(ex)
+            temp.append(ex)
+            count += ex.amount
+
+
+    template = "Cars/expenses.html"
+    context = {
+        'branch': branch,
+        'expenses': temp,
+        'count': count
+    }
     return render(request, template, context=context)
