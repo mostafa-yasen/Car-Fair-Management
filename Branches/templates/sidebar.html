@@ -1,0 +1,89 @@
+<button id="sidebar-toggle" class="transition-md shadow-animate">
+    <h5>
+        <i class="fas fa-arrow-right"></i>
+    </h5>
+</button>
+
+<div class="col-sm-2 sidebar">
+    <ul>
+        <li>
+            <a href="{% url 'details' branch.id %}">
+                <div class="row">
+                    <div class="col-sm-2 menu-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="col-sm-10">Home</div>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'clients' branch.id %}">
+                <div class="row">
+                    <div class="col-sm-2 menu-icon">
+                        <i class="fas fa-users"></i> </div>
+                    <div class="col-sm-10">Clients</div>
+                </div>
+            </a>
+        </li>
+
+        <li class="">
+            <a href="{% url 'cars' branch.pk %}">
+                <div class="row">
+                    <div class="col-sm-2 menu-icon">
+                        <i class="fas fa-car-alt"></i></div>
+                    <div class="col-sm-10">Cars</div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="{% url 'employees' branch.pk %}">
+                <div class="row">
+                    <div class="col-sm-2 menu-icon">
+                        <i class="fas fa-address-book"></i> </div>
+                    <div class="col-sm-10">Employees</div>
+                </div>
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'expenses' branch.id %}">
+                <div class="row">
+                    <div class="col-sm-2 menu-icon">
+                        <i class="fas fa-dollar-sign"></i> </div>
+                    <div class="col-sm-10">Expenses</div>
+                </div>
+            </a>
+        </li>
+
+        <!-- <li>
+            <a href="#">
+                <div class="row">
+                    <div class="col-sm-2 menu-icon">
+                        <i class="fas fa-file-alt"></i> </div>
+                    <div class="col-sm-10">Reports</div>
+                </div>
+            </a>
+        </li> -->
+
+        <li>
+            <a href="#<< url 'treasury' branch.pk >>">
+                <div class="row">
+                    <div class="col-sm-2 menu-icon">
+                        <i class="fas fa-university"></i> </div>
+                    <div class="col-sm-10">Treasury</div>
+                </div>
+            </a>
+        </li>
+
+        <!-- <li>
+            <a href="#">
+                <div class="row">
+                    <div class="col-sm-2 menu-icon">
+                        <i class="fas fa-calendar-alt"> </i></div>
+                    <div class="col-sm-10">Installment</div>
+                </div>
+            </a>
+        </li> -->
+    </ul>
+</div>

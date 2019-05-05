@@ -1,276 +1,91 @@
-{% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <title>Client Details</title>
-    <!--  Font Awesome Styles  -->
-    <link rel="stylesheet" href="{% static 'font-awesome/css/all.min.css' %}">
 
-    <!--  Bootstrap Grid System Styles  -->
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap-grid.min.css' %}">
+{% block content %}
+    <div class="col-sm-10 content">
 
-    <!--  Bootstrap Styles  -->
-    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+        <div class="details-header">
+            <h1 class="text-center text-shadow text-uppercase">
+                {{ car }}
+                <button class="btn btn-primary shadow-animate scale">
+                    <i class="fas fa-pen"></i>
+                </button>
 
-    <!--  Global Styles  -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+                <button type="button" data-toggle="modal" data-target=".bd-example-modal-sm" class="btn btn-danger shadow-animate scale">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </h1>
+        </div>
 
-    <!--  Global Styles  -->
-    <link rel="stylesheet" href="{% static 'css/my-sidebar.css' %}">
+        <div class="client-details">
+            <table class="table table-striped table-bordered">
+                <tbody>
+                    <tr>
+                        <th style="width: 20%">ID</th>
+                        <td>{{ car.pk }}</td>
+                    </tr>
+                    <tr>
+                        <th style="width: 20%">Type</th>
+                        <td>{{ car.brand }}</td>
+                    </tr>
 
-    <!--  Car Details Styles  -->
-    <link rel="stylesheet" href="{% static 'css/car-details.css' %}">
+                    <tr>
+                        <th style="width: 20%">Name</th>
+                        <td>{{ car.model_name }}</td>
+                    </tr>
 
-</head>
+                    <tr>
+                            <th style="width: 20%">Model Year</th>
+                            <td>{{ car.model_year }}</td>
+                        </tr>
 
-<body>
-    <!-- Small modal -->
-    <div class="modal fade bd-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-hidden="false">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-danger" id="exampleModalLongTitle">Delete This Car</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to delete this car ?
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-danger">Delete</button>
-                </div>
-            </div>
+                    <tr>
+                        <th style="width: 20%">Purchasing</th>
+                        <td>&pound; {{ car.purchasing_price }}</td>
+                    </tr>
+
+                    <tr>
+                        <th style="width: 20%">Selling</th>
+                        <td>&pound; {{ car.selling_price }}</td>
+                    </tr>
+
+                    <tr>
+                        <th style="width: 20%">Total Expenses</th>
+                        <td>&pound; {{ car.total_expenses }}</td>
+                    </tr>
+
+                    <tr>
+                        <th style="width: 20%">Expenses</th>
+                        <td>
+                            {% for item in expenses %} 
+                                {{ item }} <br>
+                            {% endfor %}
+                            </td>
+                    </tr>
+                    
+
+                    <tr>
+                        <th style="width: 20%">Chaisis No.</th>
+                        <td>{{ car.chaisis_no }}</td>
+                    </tr>
+
+                    <tr>
+                        <th style="width: 20%">Panel No.</th>
+                        <td>{{ car.panal_no }}</td>
+                    </tr>
+
+                    <tr>
+                        <th style="width: 20%">Color</th>
+                        <td>{{ car.color }}</td>
+                    </tr>
+
+                    <tr>
+                        <th style="width: 20%">Available</th>
+                        <td>{% if car.sold %}False{% else %}True{% endif %}</td>
+                    </tr>
+
+                </tbody>
+            </table>
         </div>
     </div>
-
-
-    <!-- Start Navbar  -->
-    <nav class="navbar navbar-dark">
-        <div class="container-fluid">
-
-            <a class="navbar-brand" href="#">
-                <img src="{% static 'img/brand-white.png' %}" height="60" class="d-inline-block align-top" alt="Image Not Found">
-            </a>
-
-            <div class="user-info my-2 my-lg-0" style="color: aliceblue">
-                <a href="#">
-                    <span>Admin <i class="fas fa-sign-out-alt" style="padding-left: 5px"></i></span>
-                </a>
-            </div>
-
-        </div>
-    </nav>
-    <!-- End Navbar  -->
-
-
-    <div class="container-fluid">
-        <div class="row">
-            <button id="sidebar-toggle" class="transition-md shadow-animate">
-                <h5>
-                    <i class="fas fa-arrow-right"></i>
-                </h5>
-            </button>
-
-            <div class="col-sm-2 sidebar">
-                <ul>
-                    <li>
-                        <a href="home.html">
-                            <div class="row">
-                                <div class="col-sm-2 menu-icon">
-                                    <i class="fas fa-home"></i>
-                                </div>
-                                <div class="col-sm-10">Home</div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="clients.html">
-                            <div class="row">
-                                <div class="col-sm-2 menu-icon">
-                                    <i class="fas fa-users"></i> </div>
-                                <div class="col-sm-10">Clients</div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li class="active">
-                        <a href="cars.html">
-                            <div class="row">
-                                <div class="col-sm-2 menu-icon">
-                                    <i class="fas fa-car-alt"></i></div>
-                                <div class="col-sm-10">Cars</div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="row">
-                                <div class="col-sm-2 menu-icon">
-                                    <i class="fas fa-address-book"></i> </div>
-                                <div class="col-sm-10">Employees</div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="expenses.html">
-                            <div class="row">
-                                <div class="col-sm-2 menu-icon">
-                                    <i class="fas fa-dollar-sign"></i> </div>
-                                <div class="col-sm-10">Expenses</div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <div class="row">
-                                <div class="col-sm-2 menu-icon">
-                                    <i class="fas fa-file-alt"></i> </div>
-                                <div class="col-sm-10">Reports</div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <div class="row">
-                                <div class="col-sm-2 menu-icon">
-                                    <i class="fas fa-university"></i> </div>
-                                <div class="col-sm-10">Treasury</div>
-                            </div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#">
-                            <div class="row">
-                                <div class="col-sm-2 menu-icon">
-                                    <i class="fas fa-calendar-alt"> </i></div>
-                                <div class="col-sm-10">Installment</div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-sm-10 content">
-
-                <div class="details-header">
-                    <h1 class="text-center text-shadow text-uppercase">
-                        {{ car }}
-                        <button class="btn btn-primary shadow-animate scale">
-                            <i class="fas fa-pen"></i>
-                        </button>
-
-                        <button type="button" data-toggle="modal" data-target=".bd-example-modal-sm" class="btn btn-danger shadow-animate scale">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </h1>
-                </div>
-
-                <div class="client-details">
-                    <table class="table table-striped table-bordered">
-                        <tbody>
-                            <tr>
-                                <th style="width: 20%">ID</th>
-                                <td>{{ car.pk }}</td>
-                            </tr>
-                            <tr>
-                                <th style="width: 20%">Type</th>
-                                <td>{{ car.brand }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="width: 20%">Name</th>
-                                <td>{{ car.model_name }}</td>
-                            </tr>
-
-                            <tr>
-                                    <th style="width: 20%">Model Year</th>
-                                    <td>{{ car.model_year }}</td>
-                                </tr>
-
-                            <tr>
-                                <th style="width: 20%">Purchasing</th>
-                                <td>&pound; {{ car.purchasing_price }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="width: 20%">Selling</th>
-                                <td>&pound; {{ car.selling_price }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="width: 20%">Total Expenses</th>
-                                <td>&pound; {{ car.total_expenses }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="width: 20%">Expenses</th>
-                                <td>
-                                    {% for item in expenses %} 
-                                        {{ item }} <br>
-                                    {% endfor %}
-                                    </td>
-                            </tr>
-                            
-
-                            <tr>
-                                <th style="width: 20%">Chaisis No.</th>
-                                <td>{{ car.chaisis_no }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="width: 20%">Panel No.</th>
-                                <td>{{ car.panal_no }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="width: 20%">Color</th>
-                                <td>{{ car.color }}</td>
-                            </tr>
-
-                            <tr>
-                                <th style="width: 20%">Available</th>
-                                <td>{% if car.sold %}False{% else %}True{% endif %}</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!--  Start Footer  -->
-    <footer>
-        Copyrights &copy; 2019 Mostafa Yasin
-    </footer>
-    <!--  End Footer  -->
-
-
-    <!--  Jquery Plugin  -->
-    <script src="{% static 'jquery/jquery-3.3.1.min.js' %}"></script>
-
-    <!--  Bootstrap Plugin  -->
-    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-
-    <!--  Nice Scroll  -->
-    <script src="{% static 'nice-scroll/jquery.nicescroll.min.js' %}"></script>
-
-    <!--  Global Blugin  -->
-    <script src="{% static 'js/global.js' %}"></script>
-
-    <!--  Car Details Script  -->
-    <script src="{% static 'js/car-details.js' %}"></script>
-
-</body>
-
-</html>
+{% endblock %}

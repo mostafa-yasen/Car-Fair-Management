@@ -3,7 +3,7 @@ from .models import Manager, Employee
 from Branches.models import Branch
 
 
-def index(request, branch_id):
+def employees(request, branch_id):
     branch = Branch.objects.get(pk=branch_id)
     manager = branch.manager_set.first()
     employees = list(branch.employee_set.all())

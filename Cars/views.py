@@ -3,7 +3,7 @@ from .models import Car, Expense
 from Branches.models import Branch
 
 
-def index(request, branch_id):
+def cars(request, branch_id):
     branch = Branch.objects.get(pk=branch_id)
     cars = Car.objects.all()
     cars = cars.filter(branch=branch)
